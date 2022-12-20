@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="echarts.js"></script>
+    <script src="vintage.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 1920px;height:900px;"></div>
+    <script type="text/javascript">
+      
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'),'vintage');
+
+      // 指定图表的配置项和数据
+      var  option;
+      option = {
+        title:{
+          text:'大学生饮食习惯',
+          left:'center',
+          top:30,
+        
+          textStyle:{
+            fontStyle: 'normal' ,
+            fontSize:30 ,
+             color:'#F4A460',
+          },
+        },
+        tooltip:{},
+  legend: {
+    top: 'bottom'
+  },
+  toolbox: {
+    
+    show: true,
+    feature: {
+      dataZoom: {
+        yAxisIndex: "none"
+      },
+      dataView: {
+        readOnly: false
+      },
+      magicType: {
+        type: ["line", "bar"]
+      },
+      restore: {},
+      saveAsImage: {}
+    }
+  },
+  series: [
+    {
+      name: '外出就餐的原因',
+      type: 'pie',
+      radius: [100, 350],
+      center: ['50%', '50%'],
+      roseType: 'area',
+      itemStyle: {
+        borderRadius: 50
+      },
+      data: [
+        { value: 33, name: '改善伙食' },
+        { value: 55, name: '聚餐' },
+        { value: 46, name: '价格便宜' },
+        { value: 60, name: '选择多样' },
+        { value: 48, name: '食品质量优' },
+        { value: 33, name: '服务周到' }
+        
+      ]
+    }
+  ]
+};
+  
+
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+    
+  </body>
+</html>
